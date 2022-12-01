@@ -5,19 +5,22 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the options:\n1. Validate First Name\n2. Validate Last Name");
-        switch (scanner.nextInt()){
-            case 1:
-                Registration.validFirstName();
-                break;
-            case 2:
-                Registration.validLastName();
-                break;
-        }
-    }
-}
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+	        System.out.println("Enter the options:\n1. Validate First Name\n2. Validate Last Name\n3. Validate Email ID");
+	        switch (scanner.nextInt()){
+	            case 1:
+	                Registration.validFirstName();
+	                break;
+	            case 2:
+	                Registration.validLastName();
+	                break;
+	            case 3:
+	                Registration.validEmail();
+	                break;
+	        }
+	    }
+	}
 
  class Registration {
 
@@ -49,5 +52,19 @@ public class UserRegistration {
             System.out.println("Last name is valid");
         else
             System.out.println("Last name is Invalid");
+    }
+
+    public static void validEmail() {
+        System.out.print("Enter Email : ");
+        String email = scanner.next();
+        String regex = "^[a-z]*.[a-z]+@[a-z]+.[a-z]{2,3}(.[a-z]{2})*$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        boolean result = matcher.matches();
+
+        if (result)
+            System.out.println("Email is valid");
+        else
+            System.out.println("Email is Invalid");
     }
 }
