@@ -5,22 +5,26 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 
-	    public static void main(String[] args) {
-	        Scanner scanner = new Scanner(System.in);
-	        System.out.println("Enter the options:\n1. Validate First Name\n2. Validate Last Name\n3. Validate Email ID");
-	        switch (scanner.nextInt()){
-	            case 1:
-	                Registration.validFirstName();
-	                break;
-	            case 2:
-	                Registration.validLastName();
-	                break;
-	            case 3:
-	                Registration.validEmail();
-	                break;
-	        }
-	    }
-	}
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the options:\n1. Validate First Name\n2. Validate Last Name\n3. Validate Email ID\n4. Validate Mobile Number");
+        switch (scanner.nextInt()){
+            case 1:
+                Registration.validFirstName();
+                break;
+            case 2:
+                Registration.validLastName();
+                break;
+            case 3:
+                Registration.validEmail();
+                break;
+            case 4:
+                Registration.validMobileNumber();
+                break;
+        }
+    }
+}
+
 
  class Registration {
 
@@ -66,5 +70,19 @@ public class UserRegistration {
             System.out.println("Email is valid");
         else
             System.out.println("Email is Invalid");
+    }
+
+    public static void validMobileNumber() {
+        System.out.print("Enter Mobile Number : ");
+        String mobileNo = scanner.nextLine();
+        String regex = "^[9]{1}[1]{1}[\\d]{10}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(mobileNo);
+        boolean result = matcher.matches();
+
+        if (result)
+            System.out.println("Mobile Number is valid");
+        else
+            System.out.println("Mobile Number is Invalid");
     }
 }
