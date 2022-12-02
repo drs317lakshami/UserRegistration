@@ -5,34 +5,38 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 
-	public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the options:\n1. Validate First Name\n2. Validate Last Name\n3. Validate Email ID\n4. Validate Mobile Number\n5. Validate Password Rule1\n6. Validate Password Rule2\n7. Validate Password Rule3");
-        switch (scanner.nextInt()){
-            case 1:
-            	Registration.validFirstName();
-                break;
-            case 2:
-            	Registration.validLastName();
-                break;
-            case 3:
-            	Registration.validEmail();
-                break;
-            case 4:
-            	Registration.validMobileNumber();
-                break;
-            case 5:
-            	Registration.validPasswordRule1();
-                break;
-            case 6:
-            	Registration.validPasswordRule2();
-                break;
-            case 7:
-            	Registration.validPasswordRule3();
-                break;
-        }
-    }
-}
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+	        System.out.println("Enter the options:\n1. Validate First Name\n2. Validate Last Name\n3. Validate Email ID\n4. Validate Mobile Number\n5. Validate Password Rule1\n6. Validate Password Rule2\n7. Validate Password Rule3\n8. Validate Password Rule4");
+	        switch (scanner.nextInt()){
+	            case 1:
+	            	Registration.validFirstName();
+	                break;
+	            case 2:
+	            	Registration.validLastName();
+	                break;
+	            case 3:
+	            	Registration.validEmail();
+	                break;
+	            case 4:
+	            	Registration.validMobileNumber();
+	                break;
+	            case 5:
+	            	Registration.validPasswordRule1();
+	                break;
+	            case 6:
+	            	Registration.validPasswordRule2();
+	                break;
+	            case 7:
+	            	Registration.validPasswordRule3();
+	                break;
+	            case 8:
+	            	Registration.validPasswordRule4();
+	                break;
+	        }
+	    }
+	}
+
  class Registration {
 
     public static final Scanner scanner = new Scanner(System.in);
@@ -133,5 +137,19 @@ public class UserRegistration {
             System.out.println("Password Rule3 is valid");
         else
             System.out.println("Password must have atleast one numeric number");
+    }
+
+    public static void validPasswordRule4() {
+        System.out.print("Enter Password Rule4 : ");
+        String passwordRule4 = scanner.nextLine();
+        String regex = "^(?=.*[A-z])(?=.*[0-9])(?=.*[@#$%^&*()-+=])([a-zA-Z0-9@._-]).{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(passwordRule4);
+        boolean result = matcher.matches();
+
+        if (result)
+            System.out.println("Password Rule4 is valid");
+        else
+            System.out.println("Password must has exactly one special character");
     }
 }
