@@ -7,7 +7,7 @@ public class UserRegistration {
 
 	    public static void main(String[] args) {
 	        Scanner scanner = new Scanner(System.in);
-	        System.out.println("Enter the options:\n1. Validate First Name\n2. Validate Last Name\n3. Validate Email ID\n4. Validate Mobile Number\n5. Validate Password Rule1\n6. Validate Password Rule2\n7. Validate Password Rule3\n8. Validate Password Rule4");
+	        System.out.println("Enter the options:\n1. Validate First Name\n2. Validate Last Name\n3. Validate Email ID\n4. Validate Mobile Number\n5. Validate Password Rule1\n6. Validate Password Rule2\n7. Validate Password Rule3\n8. Validate Password Rule4\n9. Validate Email Sample");
 	        switch (scanner.nextInt()){
 	            case 1:
 	            	Registration.validFirstName();
@@ -32,6 +32,9 @@ public class UserRegistration {
 	                break;
 	            case 8:
 	            	Registration.validPasswordRule4();
+	                break;
+	            case 9:
+	            	Registration.validEmailSamples();
 	                break;
 	        }
 	    }
@@ -152,4 +155,17 @@ public class UserRegistration {
         else
             System.out.println("Password must has exactly one special character");
     }
-}
+        public static void validEmailSamples() {
+            System.out.print("Enter Email Sample : ");
+            String emailSample = scanner.nextLine();
+            String regex = "^(?!.*@.*@)[a-z+_-]+(.[a-z0-9])*@[a-z0-9]+(.[a-z])*.[a-z]{2,}$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(emailSample);
+            boolean result = matcher.matches();
+
+            if (result)
+                System.out.println("Email sample is valid");
+            else
+                System.out.println("Email sample is invalid");
+        }
+    }
