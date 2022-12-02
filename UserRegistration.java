@@ -7,7 +7,7 @@ public class UserRegistration {
 
 	public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the options:\n1. Validate First Name\n2. Validate Last Name\n3. Validate Email ID\n4. Validate Mobile Number");
+        System.out.println("Enter the options:\n1. Validate First Name\n2. Validate Last Name\n3. Validate Email ID\n4. Validate Mobile Number\n5. Validate Password Rule1");
         switch (scanner.nextInt()){
             case 1:
                 Registration.validFirstName();
@@ -20,6 +20,9 @@ public class UserRegistration {
                 break;
             case 4:
                 Registration.validMobileNumber();
+                break;
+            case 5:
+                Registration.validPasswordRule1();
                 break;
         }
     }
@@ -75,7 +78,7 @@ public class UserRegistration {
     public static void validMobileNumber() {
         System.out.print("Enter Mobile Number : ");
         String mobileNo = scanner.nextLine();
-        String regex = "^[9]{1}[1]{1}[\\d]{10}$";
+        String regex = "^[\\d]{2}\\s[\\d]{10}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(mobileNo);
         boolean result = matcher.matches();
@@ -84,5 +87,19 @@ public class UserRegistration {
             System.out.println("Mobile Number is valid");
         else
             System.out.println("Mobile Number is Invalid");
+    }
+
+    public static void validPasswordRule1() {
+        System.out.print("Enter Password Rule1 : ");
+        String passwordRule1 = scanner.nextLine();
+        String regex = "^[A-Za-z0-9@._-]{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(passwordRule1);
+        boolean result = matcher.matches();
+
+        if (result)
+            System.out.println("Password Rule1 is valid");
+        else
+            System.out.println("Password must have 8 character");
     }
 }
